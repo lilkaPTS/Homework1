@@ -78,5 +78,12 @@ public class Main {
         ball.move();
         System.out.println(ball);
         System.out.println(container.collides(ball));
+        MyPoint myPoint3 = new MyPoint(1,1);
+        MyPoint myPoint4 = new MyPoint(4,1);
+        MyPoint myPoint5 = new MyPoint(3,2);
+        MyTriangle myTriangle2 = new MyTriangle(myPoint3, myPoint4, myPoint5);
+        System.out.println(myTriangle2);
+        MyTriangle myTriangle1 = new MyTriangle(0,0,0,0,0,0);
+        System.out.println(myTriangle1);
     }
 }

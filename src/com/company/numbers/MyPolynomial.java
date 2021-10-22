@@ -64,22 +64,22 @@ public class MyPolynomial {
 
 
     public MyPolynomial multiply(MyPolynomial right) {
-        int degreeAfterMultiply = this.getDegree() + right.getDegree();
-        double[] coeffsAfterMultiply = new double[degreeAfterMultiply+1];
-        Map<Integer, Double> map = new HashMap<>();
+        int degreeAfterMultiply = this.getDegree() + right.getDegree();               //определяется степень нового полинома = этот + переданный, тк при перемножении степени складываются
+        double[] coeffsAfterMultiply = new double[degreeAfterMultiply+1];             //создаём массив коэффициентов для нового полинома
+        Map<Integer, Double> map = new HashMap<>();                                   //создаём хештаблицу для вычисления аргументов степеней
         for (int i = 0; i < coeffsAfterMultiply.length; i++) {
-            map.put(i,0.0);
+            map.put(i,0.0);                                                           //задаём необходимые ключи которые отвечают за степень
         }
         int sizeThis = this.getDegree()+1;
         int sizeRight = right.getDegree()+1;
         for (int i = 0; i < sizeThis; i++) {
             for (int j = 0; j < sizeRight; j++) {
-                int subDegree = (sizeThis-1)-i + (sizeRight-1)-j;
-                map.replace(subDegree, map.get(subDegree)+this.getCoeff(i)*right.getCoeff(j));
+                int subDegree = (sizeThis-1)-i + (sizeRight-1)-j;                              //считаем степень текущего вычисления
+                map.replace(subDegree, map.get(subDegree)+this.getCoeff(i)*right.getCoeff(j)); //формируем значения для каждого ключа
             }
         }
         for (int i = 0; i < coeffsAfterMultiply.length; i++) {
-            coeffsAfterMultiply[i] = map.get((coeffsAfterMultiply.length-1)-i);
+            coeffsAfterMultiply[i] = map.get((coeffsAfterMultiply.length-1)-i);                //заполняем массив коэффициентов для нового полинома
         }
         return new MyPolynomial(coeffsAfterMultiply);
     }

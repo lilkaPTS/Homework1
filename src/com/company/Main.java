@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.ball.Ball;
+import com.company.ball.Container;
 import com.company.figure.*;
 import com.company.numbers.MyPolynomial;
 import com.company.other.*;
@@ -58,7 +60,23 @@ public class Main {
         System.out.println(myPolynomial + " + " + myPolynomial1 + " = " + myPolynomial2);
         System.out.println(myPolynomial + " * " + myPolynomial2 + " = " +myPolynomial.multiply(myPolynomial2));
         //3
-        System.out.println("Test");
-        System.out.println("Test2");
+        Ball ball = new Ball(4,4, 1, 10, 60);
+        System.out.println(ball);
+        ball.reflectVertical();
+        System.out.println(ball);
+        ball.reflectHorizontal();
+        System.out.println(ball);
+        Ball ball1 = new Ball(5,3, 2, 10, 30);
+        Ball ball2 = new Ball(5,3, 1, 10, 30);
+        Ball ball3 = new Ball(5.1f,3, 1, 10, 30);
+        Container container = new Container(2,2,4,4);
+        System.out.println(container);
+        System.out.println(container.collides(ball));
+        System.out.println(container.collides(ball1));
+        System.out.println(container.collides(ball2));
+        System.out.println(container.collides(ball3));
+        ball.move();
+        System.out.println(ball);
+        System.out.println(container.collides(ball));
     }
 }

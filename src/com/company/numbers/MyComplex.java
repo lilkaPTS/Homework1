@@ -64,7 +64,21 @@ public class MyComplex {
     }
 
     public double argument() {
-        return Math.atan(imag/real);
+        if(this.getReal()<0 && this.getImag()>=0){
+            return Math.PI + Math.atan(imag/real);
+        }
+        if(this.getReal()<0 && this.getImag()<0){
+            return -Math.PI + Math.atan(imag/real);
+        }
+        if(this.getReal() == 0 && this.getImag()>0){
+            return Math.PI/2;
+        }
+        if(this.getReal() == 0 && this.getImag()<0){
+            return -Math.PI/2;
+        }
+        else {
+            return Math.atan(imag/real);
+        }
     }
 
     public MyComplex add(MyComplex right) {

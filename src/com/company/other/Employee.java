@@ -1,5 +1,7 @@
 package com.company.other;
 
+import java.util.Objects;
+
 public class Employee {
 
     private static int counter = 1;
@@ -14,6 +16,19 @@ public class Employee {
         this.firstName = firstName;
         this.lastName = lastName;
         this.salary = salary;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return salary == employee.salary && firstName.equals(employee.firstName) && lastName.equals(employee.lastName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, salary); // мне кажется, что id Должен быть только в hashCode
     }
 
     public int getId() {

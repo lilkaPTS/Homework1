@@ -2,6 +2,7 @@ package com.company.other;
 
 import java.text.DecimalFormat;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Book {
     private DecimalFormat df = new DecimalFormat("0.###");
@@ -50,6 +51,21 @@ public class Book {
     @Override
     public String toString() {
         return String.format("Book[name=%s, authors={%s}, price=%s, qty=%d]", name, Arrays.toString(authors), df.format(price), qty);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return Double.compare(book.price, price) == 0 && qty == book.qty && name.equals(book.name) && Arrays.equals(authors, book.authors);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(name, price, qty);
+        result = 31 * result + Arrays.hashCode(authors);
+        return result;
     }
 
     public String getAuthorNames() {

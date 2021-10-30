@@ -1,10 +1,25 @@
 package com.company.ball;
 
 import java.text.DecimalFormat;
+import java.util.Objects;
 
 public class Ball {
-    private DecimalFormat df = new DecimalFormat("0.###");
+    private final DecimalFormat df = new DecimalFormat("0.###");
     private float x;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ball ball = (Ball) o;
+        return Float.compare(ball.x, x) == 0 && Float.compare(ball.y, y) == 0 && radius == ball.radius && Float.compare(ball.xDelta, xDelta) == 0 && Float.compare(ball.yDelta, yDelta) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y, radius, xDelta, yDelta);
+    }
+
     private float y;
     private int radius;
     private float xDelta;
@@ -17,6 +32,8 @@ public class Ball {
         this.xDelta = (float) (speed * Math.cos(direction));
         this.yDelta = (float) (-speed * Math.sin(direction));
     }
+
+
 
     public float getX() {
         return x;

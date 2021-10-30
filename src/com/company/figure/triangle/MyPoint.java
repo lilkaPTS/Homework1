@@ -1,6 +1,7 @@
 package com.company.figure.triangle;
 
 import java.text.DecimalFormat;
+import java.util.Objects;
 
 public class MyPoint {
     private DecimalFormat df = new DecimalFormat("0.###");
@@ -13,6 +14,19 @@ public class MyPoint {
     public MyPoint(double x, double y) {
         this.x = x;
         this.y = y;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MyPoint myPoint = (MyPoint) o;
+        return Double.compare(myPoint.x, x) == 0 && Double.compare(myPoint.y, y) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 
     public double getX() {

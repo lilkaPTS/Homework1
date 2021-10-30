@@ -9,6 +9,7 @@ import com.company.figure.triangle.*;
 import com.company.numbers.MyComplex;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 public class Main {
@@ -83,7 +84,17 @@ public class Main {
         MyPoint myPoint5 = new MyPoint(3,2);
         MyTriangle myTriangle2 = new MyTriangle(myPoint3, myPoint4, myPoint5);
         System.out.println(myTriangle2);
-        MyTriangle myTriangle1 = new MyTriangle(0,0,0,0,0,0);
-        System.out.println(myTriangle1);
+        //MyTriangle myTriangle1 = new MyTriangle(0,0,0,0,0,0);
+        //System.out.println(myTriangle1);
+        //
+        Employee ilya = new Employee("Илья", "Гудима", 1000);
+        Employee ksenia = new Employee("Илья", "Гудима", 1000);
+        System.out.println(ilya.equals(ksenia));
+        System.out.println(ilya.hashCode());
+        System.out.println(ksenia.hashCode());
+        HashSet<Employee> hashSet = new HashSet<>();
+        hashSet.add(ilya);
+        hashSet.add(ksenia);
+        System.out.println(hashSet.size());
     }
 }

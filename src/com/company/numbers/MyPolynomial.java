@@ -1,6 +1,7 @@
 package com.company.numbers;
 
 import java.text.DecimalFormat;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,6 +36,19 @@ public class MyPolynomial {
             output.delete(output.length() - lengthLastCoeffWithSing - 2, output.length() - lengthLastCoeffWithSing); // удаление ^1 перед последним x
         }
         return output.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MyPolynomial that = (MyPolynomial) o;
+        return Arrays.equals(coeffs, that.coeffs);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(coeffs);
     }
 
     public double evaluate(double x) {
